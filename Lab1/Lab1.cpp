@@ -9,7 +9,7 @@ int main()
 {
     /*double a1 = -1, b1 = 0, c1 = 4;
     double a2 = 1, b2 = -2, c2 = 0;*/
-
+    setlocale(LC_ALL, "Ru");
     double a1, a2, b1, b2, c1, c2;
     cout << "Введите коеффициенты первого графика a1, b1, c1" << endl;
     cin >> a1 >> b1 >> c1;
