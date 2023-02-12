@@ -1,14 +1,14 @@
-#include <iostream>
-#include <vector>
-#include <tuple>
-using namespace std;
-const double dx = 0.00001;
+vector <double> OpisanieUrav(double, double, double, double, double);
+tuple <double, double> Grani(double, double, double, double, double, double);
+tuple <double, double> Grani(double, double, double);
+double Integral(vector <double>(double, double, double, double, double), double, double, double, double, double);
+
 
 
 vector <double> OpisanieUrav(double a, double b, double c, double x1, double x2)
 {
     vector <double> mas;
-    for (double x = x1; x <= x2; x += dx)
+    for (double v vbx = x1; x <= x2; x += dx)
     {
         mas.push_back(a * x * x + b * x + c);
     }
@@ -32,11 +32,6 @@ tuple <double, double> Grani(double a, double b, double c)
     if (d < 0)
     {
         x1 = -1000000;
-        x2 = x1;
-    }
-    else if (a==0)
-    {
-        x1 = -c / b;
         x2 = x1;
     }
     else

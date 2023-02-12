@@ -69,6 +69,4 @@ int main()
         }
     }
     cout << abs(square1 - square2);
-    f();
-    /*cout << abs(abs(square1) - abs(square2));*/
 }
