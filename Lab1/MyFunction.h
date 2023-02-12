@@ -5,7 +5,8 @@ using namespace std;
 const double dx = 0.00001;
 
 
-vector <double> OpisanieUrav(double a, double b, double c, double x1, double x2)
+vector <double> OpisanieUrav(double a, double b, double c, 
+    double x1, double x2)
 {
     vector <double> mas;
     for (double x = x1; x <= x2; x += dx)
@@ -15,7 +16,8 @@ vector <double> OpisanieUrav(double a, double b, double c, double x1, double x2)
     return mas;
 }
 
-tuple <double, double> Grani(double a1, double b1, double c1, double a2, double b2, double c2)
+tuple <double, double> Integral(double a1, double b1, double c1,
+    double a2, double b2, double c2)
 {
     double a = a1 - a2, b = b1 - b2, c = c1 - c2;
     double d, x1, x2;
@@ -25,19 +27,22 @@ tuple <double, double> Grani(double a1, double b1, double c1, double a2, double 
     return make_tuple(x1, x2);
 }
 
-tuple <double, double> Grani(double a, double b, double c)
+tuple <double, double> Integral(double a, double b, double c, bool flag)
 {
     double d, x1, x2;
     d = b * b - 4 * a * c;
     if (d < 0)
     {
-        x1 = -1000000;
-        x2 = x1;
+        flag = true;
     }
     else if (a==0)
     {
         x1 = -c / b;
         x2 = x1;
+        if (b == 0)
+        {
+            flag = true;
+        }
     }
     else
     {
@@ -48,7 +53,8 @@ tuple <double, double> Grani(double a, double b, double c)
     return make_tuple(x1, x2);
 }
 
-double Integral(vector <double> func(double, double, double, double, double), double a, double b, double c, double x1, double x2)
+double Integral(vector <double> func(double, double, double, double, double), 
+    double a, double b, double c, double x1, double x2)
 {
     vector <double> dlina;
     dlina = func(a, b, c, x1, x2);
@@ -56,6 +62,25 @@ double Integral(vector <double> func(double, double, double, double, double), do
     for (double i = 1; i < dlina.size(); i++)
     {
         square += dx * (dlina[i] + dlina[i - 1]) / 2;
+    }
+    return square;
+}
+
+double Integral(vector <double> func(double, double, double, double, double),
+    double a1, double b1, double c1, double a2, double b2, double c2,
+    double x1, double x2)
+{
+    vector <double> y1, y2, dlina;
+    double square = 0;
+    y1 = func(a1, b1, c1, x1, x2);
+    y2 = func(a2, b2, c2, x1, x2);
+    for (double i = 0; i < y1.size(); i++)
+    {
+        dlina.push_back(abs(y1[i] - y2[i]));
+        if (i > 0)
+        {
+            square += dx * (dlina[i] + dlina[i - 1]) / 2;
+        }
     }
     return square;
 }
