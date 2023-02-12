@@ -63,17 +63,11 @@ double Integral(double func(double, double, double, double),
     double a1, double b1, double c1, double a2, double b2, double c2,
     double x1, double x2)
 {
-    vector <double> dlina;
     double square = 0;
-    int i = 0;
-    for (double x = x1; x <= x2; x+=dx)
+    for (double x = x1 + dx; x <= x2; x += dx)
     {
-        dlina.push_back(abs(func(a1, b1, c1, x) - func(a2, b2, c2, x)));
-        if (i > 0)
-        {
-            square += dx * (dlina[i] + dlina[i - 1]) / 2;
-        }
-        i += 1;
+        square += dx * (abs(func(a1, b1, c1, x) - func(a2, b2, c2, x)) + 
+            abs(func(a1, b1, c1, x-dx) - func(a2, b2, c2, x-dx))) / 2;
     }
     return square;
 }
