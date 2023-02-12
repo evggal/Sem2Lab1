@@ -1,3 +1,4 @@
+/*Вспомогательный файл*/
 vector <double> OpisanieUrav(double, double, double, double, double);
 tuple <double, double> Grani(double, double, double, double, double, double);
 tuple <double, double> Grani(double, double, double);
