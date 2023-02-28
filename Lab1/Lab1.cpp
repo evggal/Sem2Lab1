@@ -71,6 +71,8 @@ int main()
                 Integral(OpisanieUrav, a2, b2, c2, x22, x2);
         }
     }
+    cout << "Точки пересечения графиков:" << endl;
+    cout << "Левая граница: " << x1 << " Правая граница: " << x2 << endl;
     cout << "Площадь через разность площадей " << abs(square1 - square2) << endl;
     double square = Integral(OpisanieUrav, a1, b1, c1, a2, b2, c2, x1, x2);
     cout << "Площадь через длину растояния между графиками " << square;
